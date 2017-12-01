@@ -56,7 +56,7 @@ void LinkedQueue<T>::copy(const LinkedQueue& other)
 	Node* copy = new Node(toCopy->data, nullptr);
 	Node* lastCopied = toCopy;
 	first = toCopy;
-	while (other.last->next)
+	while (toCopy->next)
 	{
 		toCopy = toCopy->next;
 		copy = new Node(toCopy->data, nullptr);
