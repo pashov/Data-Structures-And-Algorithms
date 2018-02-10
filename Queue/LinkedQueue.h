@@ -35,7 +35,7 @@ public:
 public:
 	void enqueue(const T&);
 	void dequeue();
-	T first()const;
+	T peek()const;
 	bool isEmpty()const;
 
 public:
@@ -54,8 +54,8 @@ void LinkedQueue<T>::copy(const LinkedQueue& other)
 {
 	Node* toCopy = other.first;
 	Node* copy = new Node(toCopy->data, nullptr);
-	Node* lastCopied = toCopy;
-	first = toCopy;
+	Node* lastCopied = copy;
+	first = copy;
 	while (toCopy->next)
 	{
 		toCopy = toCopy->next;
@@ -148,7 +148,7 @@ void LinkedQueue<T>::dequeue()
 }
 
 template <typename T>
-T LinkedQueue<T>::first()const
+T LinkedQueue<T>::peek()const
 {
 	if (isEmpty())
 	{

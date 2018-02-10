@@ -1,6 +1,5 @@
 #pragma once
 //All of the code is in the header, since it's a template class.
-
 #include <iostream>
 using namespace std;
 
@@ -72,6 +71,7 @@ void BSTree<T>::destroy(Node* root)
 		destroy(root->right);
 		delete root;
 	}
+	size = 0;
 }
 
 
@@ -166,7 +166,7 @@ void BSTree<T>::removeHelp(T toRemove, Node*& root)
 				copy = copy->right;
 			}
 			root->data = copy->data;
-			delete copy;
+			removeHelp(copy->data, root->left);
 		}
 		else if (root->left)
 		{
@@ -180,6 +180,7 @@ void BSTree<T>::removeHelp(T toRemove, Node*& root)
 			root = root->right;
 			delete toDelete;
 		}
+		size--;
 	}
 	else if (toRemove < root->data)
 	{

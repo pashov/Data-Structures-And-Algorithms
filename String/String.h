@@ -4,13 +4,13 @@ class String
 {
 private:
 	char* data;
-	unsigned int size;
+	unsigned int size; //counting the '\0'
 
 private:
 	void init();
 	void copy(const String&);
 	void destroy();
-	int myStrLen(const char*)const;
+	int myStrLen(const char*)const; //counting the '\0'
 
 public:
 	String();
@@ -18,6 +18,9 @@ public:
 	String(const String&);
 	String& operator=(const String&);
 	~String();
+
+	bool operator==(const String&)const;
+	friend String operator+(const String&, const String&);
 
 public:
 	char getAt(const unsigned int)const;

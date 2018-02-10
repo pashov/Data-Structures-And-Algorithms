@@ -15,7 +15,7 @@ public:
 public:
 	void enqueue(const T&);
 	void dequeue();
-	T first()const;
+	T peek()const;
 	bool isEmpty()const;
 
 public:
@@ -46,15 +46,21 @@ void StaticQueue<T>::dequeue()
 	{
 		throw "EMPTY QUEUE";
 	}
-	for (int i = 0; i < indexLast - 2; i++)
+	if (size == 1)
 	{
-		data[i] = data[i + 1];
+		data[0] = T();
+	}
+	else {
+		for (unsigned int i = 0; i < size - 1; i++)
+		{
+			data[i] = data[i + 1];
+		}
 	}
 	size--;
 }
 
 template <typename T>
-T StaticQueue<T>::first()const
+T StaticQueue<T>::peek()const
 {
 	if (isEmpty())
 	{

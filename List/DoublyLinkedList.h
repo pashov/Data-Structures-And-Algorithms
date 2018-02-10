@@ -220,13 +220,13 @@ void DoublyLinkedList<T>::insertAfter(int index, const T& data)
 		{
 			Node* toInsert = new Node(data, copy, copy->next);
 			copy->next = copy->next->prev = toInsert;
+			size++;
 		}
 		else
 		{
 			insertLast();
 		}
 	}
-	size++;
 }
 
 template <typename T>
@@ -257,13 +257,13 @@ void DoublyLinkedList<T>::remove(int index)
 			copy->prev->next = copy->next;
 			copy->next->prev = copy->prev;
 			delete toDelete;
+			size--;
 		}
 		else
 		{
 			removeLast();
 		}
 	}
-	size--;
 }
 
 template <typename T>
@@ -271,7 +271,7 @@ void DoublyLinkedList<T>::printForward()const
 {
 	if (isEmpty())
 	{
-		cout << "EMPTY" << endl;
+		cout << "EMPTY";
 	}
 	else
 	{
@@ -281,8 +281,8 @@ void DoublyLinkedList<T>::printForward()const
 			cout << copy->data << " ";
 			copy = copy->next;
 		}
-		cout << endl;
 	}
+	cout << endl;
 }
 
 template <typename T>
@@ -290,7 +290,7 @@ void DoublyLinkedList<T>::printBackward()const
 {
 	if (isEmpty())
 	{
-		cout << "EMPTY" << endl;
+		cout << "EMPTY";
 	}
 	else
 	{
@@ -300,8 +300,8 @@ void DoublyLinkedList<T>::printBackward()const
 			cout << copy->data << " ";
 			copy = copy->prev;
 		}
-		cout << endl;
 	}
+	cout << endl;
 }
 
 template <typename T>
