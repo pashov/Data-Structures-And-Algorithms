@@ -1,4 +1,6 @@
 #pragma once
+#include <iostream>
+using namespace std;
 
 class String
 {
@@ -21,11 +23,13 @@ public:
 
 	bool operator==(const String&)const;
 	friend String operator+(const String&, const String&);
+	friend ostream& operator<<(ostream&, const String&);
+	friend istream& operator>>(istream&, String&);
 
 public:
 	char getAt(const unsigned int)const;
 	void setAt(const unsigned int, const char);
 	char* getData()const;
-	unsigned int getSize()const;
+	unsigned int getSize()const;  //counting the '\0'
 
 };

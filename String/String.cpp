@@ -111,6 +111,30 @@ String operator+(const String& lst, const String& rst)
 	return (String)temp;
 }
 
+ostream& operator<<(ostream& ostr, const String& string)
+{
+	if (string.data)
+	{
+		ostr << string.data;
+	}
+	return ostr;
+}
+
+istream& operator>>(istream& istr, String& string)
+{
+	char* buffer = new char[1000];
+	istr.getline(buffer, 1000);
+	int bufferSize = string.myStrLen(buffer);
+	string.data = new char[bufferSize];
+	for (int i = 0; i < bufferSize; i++)
+	{
+		string.data[i] = buffer[i];
+	}
+	string.size = bufferSize;
+	delete[] buffer;
+	return istr;
+}
+
 char String::getAt(const unsigned int index)const
 {
 	if (index > size - 1)
